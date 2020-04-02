@@ -1,24 +1,26 @@
 package TPs.PilasColasListas.Stack;
 
-public class MyDinamicStack<T> implements Stack<T>{
+public class MyDynamicStack<T> implements Stack<T>{
 
     Node<T> top;
     int size;
 
-    public MyDinamicStack() {
+    public MyDynamicStack() {
         this.top = null;
         size = 0;
     }
 
     @Override
-    public void push(T object) {
+    public void push(T data) {
         if (top == null){
-            top = new Node(object);
+            top = new Node();
+
         } else {
-            Node aux = new Node(object);
-            aux.setNode(top);
+            Node aux = new Node();
+            aux.next = (top);
             top = aux;
         }
+        top.data = data;
         size++;
 
     }
@@ -28,7 +30,7 @@ public class MyDinamicStack<T> implements Stack<T>{
         if (isEmpty()){
             throw new StackIsEmptyException();
         } else {
-            top = top.getNode();
+            top = top.next;
             size--;
         }
     }
@@ -38,7 +40,7 @@ public class MyDinamicStack<T> implements Stack<T>{
         if (isEmpty()){
             throw new StackIsEmptyException();
         } else {
-            return top.getObject();
+            return top.data;
         }
     }
 
@@ -56,5 +58,11 @@ public class MyDinamicStack<T> implements Stack<T>{
     public void empty() {
         top = null;
         size = 0;
+    }
+
+    private class Node<T> {
+        T data;
+        Node next;
+
     }
 }

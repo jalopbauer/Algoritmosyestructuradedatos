@@ -1,15 +1,13 @@
 package TPs.PilasColasListas.Queue;
 
 
-import TPs.PilasColasListas.Node;
-
-public class DynamicQueue<T> implements Queue<T> {
+public class MyDynamicQueue<T> implements Queue<T> {
 
     private Node<T> front;
     private Node<T> back;
     private int amount;
 
-    public DynamicQueue() {
+    public MyDynamicQueue() {
         this.amount = 0;
         front = null;
         back = null;
@@ -64,7 +62,7 @@ public class DynamicQueue<T> implements Queue<T> {
 
     @Override
     public int size() {
-        return size;
+        return amount;
     }
 
     @Override
@@ -72,5 +70,10 @@ public class DynamicQueue<T> implements Queue<T> {
         front = null;
         back = null;
         amount = 0;
+    }
+
+    private class Node<T> {
+        T data;
+        Node next;
     }
 }

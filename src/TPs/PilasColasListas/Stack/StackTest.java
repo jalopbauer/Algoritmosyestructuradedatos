@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MyStackTest {
+class StackTest {
 
     MyStack myStack = new MyStack();
-
+    MyDynamicStack myDynamicStack = new MyDynamicStack();
 
     @Test
     void push() {
@@ -15,19 +15,26 @@ class MyStackTest {
         myStack.push(2);
         myStack.push(3);
         myStack.push(4);
+        myDynamicStack.push(1);
+        myDynamicStack.push(2);
+        myDynamicStack.push(3);
+        myDynamicStack.push(4);
     }
 
     @Test
     void pop() throws StackIsEmptyException {
         myStack.pop();
+        myDynamicStack.pop();
     }
 
     @Test
     void peek() throws StackIsEmptyException {
         push();
         assertEquals(4, myStack.peek());
+        assertEquals(4, myDynamicStack.peek());
         pop();
         assertEquals(3, myStack.peek());
+        assertEquals(3, myDynamicStack.peek());
     }
 
     @Test
